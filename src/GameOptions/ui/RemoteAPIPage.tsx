@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Button, Link, TextField, Tooltip, Typography } from "@mui/material";
 import { GameOptionsPage } from "./GameOptionsPage";
-import { isValidConnectionHostname, isValidConnectionPort, Settings } from "../../Settings/Settings";
+import { isValidConnectionPort, Settings } from "../../Settings/Settings";
 import { ConnectionBauble } from "./ConnectionBauble";
 import { isRemoteFileApiConnectionLive, newRemoteFileApiConnection } from "../../RemoteFileAPI/RemoteFileAPI";
 
@@ -10,7 +10,7 @@ export const RemoteAPIPage = (): React.ReactElement => {
   const [remoteFileApiPort, setRemoteFileApiPort] = useState(Settings.RemoteFileApiPort);
 
   function handleRemoteFileApiHostnameChange(event: React.ChangeEvent<HTMLInputElement>): void {
-    let newValue = event.target.value.trim();
+    const newValue = event.target.value.trim();
     // Empty string will be automatically changed to "localhost".
     setRemoteFileApiHostname(newValue);
     Settings.RemoteFileApiAddress = newValue;
