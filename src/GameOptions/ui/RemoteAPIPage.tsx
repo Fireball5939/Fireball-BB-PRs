@@ -12,12 +12,6 @@ export const RemoteAPIPage = (): React.ReactElement => {
   function handleRemoteFileApiHostnameChange(event: React.ChangeEvent<HTMLInputElement>): void {
     let newValue = event.target.value.trim();
     // Empty string will be automatically changed to "localhost".
-    if (newValue === "") {
-      newValue = "localhost";
-    }
-    if (!isValidConnectionHostname(newValue)) {
-      return;
-    }
     setRemoteFileApiHostname(newValue);
     Settings.RemoteFileApiAddress = newValue;
   }
