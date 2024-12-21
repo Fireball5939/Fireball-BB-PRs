@@ -24,6 +24,7 @@ export class Remote {
       this.connection = new WebSocket(address);
     } catch (e) {
       console.error(`Invalid address, ${e}`);
+      return;
     }
 
     this.connection.addEventListener("error", (e: Event) =>
