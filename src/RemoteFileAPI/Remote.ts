@@ -20,7 +20,11 @@ export class Remote {
 
   public startConnection(): void {
     const address = Remote.protocol + "://" + this.ipaddr + ":" + this.port;
-    this.connection = new WebSocket(address);
+    try {
+      this.connection = new WebSocket(address);
+    } catch (e) {
+      console.error(`Invalid address, ${e}`);
+    }
 
     this.connection.addEventListener("error", (e: Event) =>
       SnackbarEvents.emit(`Error with websocket ${address}, details: ${JSON.stringify(e)}`, ToastVariant.ERROR, 5000),
